@@ -16,3 +16,16 @@
 * interface: chainlit 
 * reverse tunnel: ngrok 
 
+
+## How to reuse vector store containing embeddings for our compete info
+
+```py
+  model_name = "BAAI/bge-small-en"
+  encode_kwargs = {'normalize_embeddings': True} # set True to compute cosine similarity
+  embeddings = HuggingFaceBgeEmbeddings(model_name=model_name, encode_kwargs=encode_kwargs)
+
+  #load vector store containing embeddings of Azure AI Services documentation.
+  vector_store = FAISS.load_local(embeddings=embeddings, folder_path="./ob_vector_store_v3")
+  #vector_store = FAISS.load_local(embeddings=embeddings, folder_path="./papers_vector_store_v2")
+  retriever = vector_store.as_retriever(search_kwargs={'k': n_documents})
+```
