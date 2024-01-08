@@ -17,7 +17,7 @@
 * reverse tunnel: ngrok 
 
 
-## How to reuse vector store containing embeddings for our compete info
+## How to reuse vector store containing embeddings fot compete info
 
 ```py
   model_name = "BAAI/bge-small-en"
